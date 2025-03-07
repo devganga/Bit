@@ -9,7 +9,7 @@ public class ArticlesVm
     public string? Url { get; init; }
     public string? ImageUrl { get; init; }
     public string? Category { get; init; }
-    //public string[]? Category { get; init; }
+    //public List<string>? Category { get; init; }
     public string? Tags { get; init; }
     public bool? IsPublished { get; init; }
     public int? Rating { get; init; }
@@ -23,7 +23,17 @@ public class ArticlesVm
         public Mapping()
         {
             CreateMap<Article, ArticlesVm>();
-            //CreateMap<Article, ArticlesVm>().ForMember(d => d.Category, opt => opt.MapFrom(s => s.Category.Split(",").ToList()));
+            //CreateMap<Article, ArticlesVm>().ForMember(d => d.Category, opt => opt.MapFrom(s => SplitData(s.Category)));
+        }
+
+        // Custom method to split the string and return a list
+        private List<string> SplitData(string? data)
+        {
+            if (string.IsNullOrWhiteSpace(data))
+            {
+                return new List<string>();
+            }
+            return data.Split(',').Select(s => s.Trim()).ToList();
         }
     }
 }

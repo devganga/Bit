@@ -60,6 +60,14 @@ public class CreateArticleCommandHandler : IRequestHandler<CreateArticleCommand,
             Description = request.Description,
             Url = request.Url,
             ImageUrl = request.ImageUrl,
+            Category = request.Category,
+            Tags = request.Tags,
+            IsPublished = request.IsPublished,
+            Rating = request.Rating,
+            PublishedDate = request.PublishedDate,
+            Views = request.Views,
+            Likes = request.Likes,
+            Comments = request.Comments
 
         };
 
